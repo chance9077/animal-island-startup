@@ -1,0 +1,110 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.app {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 36vh;
+  background: url('/assets/home_bg.webp') repeat 0 0 / auto auto, #7dc395;
+  animation: bgScroll 80s linear infinite;
+  font-family: var(--animal-font-family);
+}
+
+.footerSpacer {
+  flex: 1;
+}
+
+.app > footer {
+  flex-shrink: 0;
+}
+
+@keyframes bgScroll {
+  0%   { background-position: 0 0; }
+  50%  { background-position: -500px -400px; }
+  100% { background-position: -1000px -800px; }
+}
+
+/* ---------- 搜索框容器 ---------- */
+.searchWrapper {
+  width: 90vw;
+  max-width: 600px;
+  animation: ac-fade-up 0.5s ease-out;
+  position: relative;
+}
+
+/* ---------- 覆写 animal-island-ui Input ---------- */
+.searchInput .animal-wrapper-large {
+  border-radius: 16px !important;
+  box-shadow: var(--animal-shadow-base);
+  transition: box-shadow var(--animal-motion-duration-base, 0.25s) var(--animal-motion-ease, cubic-bezier(.4,0,.2,1)),
+              border-color var(--animal-motion-duration-base, 0.25s) var(--animal-motion-ease, cubic-bezier(.4,0,.2,1));
+}
+
+.searchInput .animal-wrapper-large:focus-within {
+  box-shadow: var(--animal-shadow-lg);
+}
+
+/* ---------- 引擎 Badge ---------- */
+.engineBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--badge-color, var(--animal-primary-color, #19c8b9));
+  transition: background var(--animal-motion-duration-fast, 0.15s) var(--animal-motion-ease, cubic-bezier(.4,0,.2,1));
+  user-select: none;
+}
+
+/* ---------- 候选引擎列表 ---------- */
+.candidateBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 0 4px;
+  flex-wrap: wrap;
+  animation: ac-fade-up 0.2s ease-out;
+}
+
+.candidateTag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--animal-text-color-secondary, #9f927d);
+  background: var(--animal-bg-color-secondary, #f0e8d8);
+  transition: all var(--animal-motion-duration-fast, 0.15s) var(--animal-motion-ease, cubic-bezier(.4,0,.2,1));
+}
+
+.candidateTagActive {
+  color: #fff;
+  background: var(--tag-color, var(--animal-primary-color, #19c8b9));
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.candidateHint {
+  font-size: 11px;
+  color: var(--animal-text-color-disabled, #c4b89e);
+  margin-left: 2px;
+}
+
+/* ---------- 动画 ---------- */
+@keyframes ac-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
